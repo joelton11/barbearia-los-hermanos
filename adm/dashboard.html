@@ -1,26 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Dashboard - Barbearia Samuca</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="dashboard.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="dashboard-container">
-    <h1>Dashboard</h1>
-    <button id="btn-logout">Sair</button>
-    <table id="tabela-agendamentos">
-      <tr>
-        <th>Nome</th>
-        <th>Telefone</th>
-        <th>Corte</th>
-        <th>Data</th>
-        <th>Hora</th>
-        <th>Status</th>
-        <th>Ações</th>
-      </tr>
-    </table>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo">💈</div>
+        <div class="brand-text">
+          <h2>Samuca</h2>
+          <small>Barbearia</small>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item active" href="#">Dashboard</a>
+        <a class="menu-item" href="#">Clientes</a>
+        <a class="menu-item" href="#">Serviços</a>
+        <a class="menu-item" href="#">Relatórios</a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <button id="toggle-theme" class="btn small">Tema</button>
+        <a id="btn-logout" class="btn small danger">Sair</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h1>Painel de Agendamentos</h1>
+
+        <div class="top-actions">
+          <input type="text" id="buscar-nome" placeholder="🔎 Buscar por nome" />
+          <input type="date" id="buscar-data" />
+          <button id="btn-refresh" class="btn">Atualizar</button>
+        </div>
+      </header>
+
+      <section class="stats" aria-label="Estatísticas rápidas">
+        <div class="stat">
+          <div class="stat-value" id="total-hoje">0</div>
+          <div class="stat-label">Hoje</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="total-semana">0</div>
+          <div class="stat-label">Essa semana</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="total-pendentes">0</div>
+          <div class="stat-label">Pendentes</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="total-concluidos">0</div>
+          <div class="stat-label">Concluídos</div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="card">
+          <div class="card-header">
+            <h3>Agendamentos</h3>
+            <div class="card-actions">
+              <label for="agrupamento">Gráfico:</label>
+              <select id="agrupamento">
+                <option value="dias">Agendamentos por dia (7 dias)</option>
+                <option value="cortes">Cortes mais pedidos</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="table-wrap">
+              <table id="tabela-agendamentos">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Corte</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- preenchido por JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="chart-area">
+              <canvas id="chart" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <small>Barbearia Samuca • Dashboard</small>
+      </footer>
+    </main>
   </div>
 
   <script src="script-dashboard.js"></script>
