@@ -5,12 +5,12 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('./img/img.jpg') no-repeat center center/cover;
+  background: url('./img/img1.jpg') no-repeat center center/cover;
 }
 
 .login-container {
   width: 400px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(22, 2, 2, 0.459);
   padding: 30px;
   border-radius: 12px;
   text-align: center;
@@ -32,10 +32,9 @@ body {
   margin-top: 10px;
   border:none;
   border-radius:6px;
-  background:#f4c542;
+  background:#e2b948;
   font-weight:bold;
   cursor:pointer;
   transition:0.3s;
 }
 
-.login-container button:hover { background:#d4a832; }

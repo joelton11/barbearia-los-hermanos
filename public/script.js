@@ -17,13 +17,13 @@ document.getElementById("form-agendamento").addEventListener("submit", async (e)
     });
 
     if(res.ok){
-      alert("✅ Agendamento realizado com sucesso!");
+      alert("Agendamento realizado com sucesso!");
       e.target.reset();
     } else {
-      alert("❌ Ocorreu um erro ao agendar. Tente novamente.");
+      alert("Ocorreu um erro ao agendar. Tente novamente.");
     }
   } catch(err){
     console.error(err);
-    alert("❌ Falha na conexão com o servidor.");
+    alert("Falha na conexão com o servidor.");
   }
 });
